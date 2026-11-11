@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Semester Timetable</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b64;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 30px;
+        }
+
+        th {
+            background-color: #243b64;
+            color: white;
+            padding: 15px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 13px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #edf2fa;
+        }
+
+        .empty {
+            text-align: center;
+            color: #d9534f;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>MY SEMESTER TIMETABLE</h1>
+    <p>Class Schedule</p>
+
+    {% if slots %}
+    <table>
+        <tr>
+            <th>Day</th>
+            <th>Time Slot</th>
+            <th>Subject</th>
+            <th>Faculty</th>
+            <th>Classroom</th>
+        </tr>
+
+        {% for slot in slots %}
+        <tr>
+            <td>{{ slot.day }}</td>
+            <td>{{ slot.time_slot }}</td>
+            <td>{{ slot.subject }}</td>
+            <td>{{ slot.faculty }}</td>
+            <td>{{ slot.classroom }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+        <div class="empty">
+            No timetable records are available.
+        </div>
+    {% endif %}
+
+</body>
+</html>
